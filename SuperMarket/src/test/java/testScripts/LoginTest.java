@@ -4,9 +4,9 @@ import java.io.IOException;
 
 import org.testng.annotations.Test;
 
-import Pages.LoginPage;
-import Utilities.ExcelUtility;
+import utilities.ExcelUtility;
 import base.Base;
+import pages.LoginPage;
 
 public class LoginTest extends Base{
 
