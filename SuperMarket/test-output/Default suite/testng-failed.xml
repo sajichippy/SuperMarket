@@ -6,8 +6,8 @@
       <class name="testScripts.AdminUsersTest">
         <methods>
           <include name="verifyNewUserCreation"/>
-          <include name="browserLaunch"/>
           <include name="driverCloseAndQuit"/>
+          <include name="browserLaunch"/>
         </methods>
       </class> <!-- testScripts.AdminUsersTest -->
     </classes>

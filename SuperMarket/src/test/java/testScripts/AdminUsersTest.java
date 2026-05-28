@@ -2,6 +2,7 @@ package testScripts;
 
 import java.io.IOException;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import utilities.ExcelUtility;
@@ -13,7 +14,7 @@ import pages.LoginPage;
 
 public class AdminUsersTest extends Base {
 
-	@Test
+	@Test(description= "create new user")
 	public void verifyNewUserCreation() throws IOException {
 
 		String userNameValue = ExcelUtility.readStringData(0, 0, "LoginPage");
@@ -35,17 +36,25 @@ public class AdminUsersTest extends Base {
 		adminUser.clickOnNewUser();
 		adminUser.enterUserNameInUserField(newUserNameValue);
 		adminUser.enternewPasswordOnPasswordField(newpasswordValue);
-
 		adminUser.SelectUserType();
 		adminUser.clickOnSaveButton();
+		boolean isAlertMessageDisplayed = adminUser.alertMessageDisplayed();
+		Assert.assertEquals(isAlertMessageDisplayed,"            Username already exists.        ");
+		
 		adminUser.clickOnSearchButton();
 		// String searchUserNameValue = ExcelUtility.readStringData(0, 0,
 		// "SearchNames");
+		
+		
 		adminUser.enterUserNameToSearch();
 		adminUser.selectSearchUserType();
 		adminUser.clickOnSearchButton1();
+		boolean isActiveMessageDisplayed = adminUser.activeMessageDisplayed();
+		Assert.assertEquals(isActiveMessageDisplayed, ".........RESULT NOT FOUND.......");
 
 		adminUser.reset();
+		boolean isAdminUserTextDisplayed = adminUser.adminTextDisplayed();
+		Assert.assertEquals(isAdminUserTextDisplayed, "User was unable to reset");
 
 	}
 }

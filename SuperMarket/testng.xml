@@ -3,10 +3,17 @@
 <suite name="Suite">
 <listeners><listener class-name="reportGeneration.Listners"></listener></listeners>
   <test thread-count="5" name="Test">
+  <parameter name="browsers" value="chrome"></parameter>
     <classes>
-      <class name="testScripts.AdminUsersTest"></class>
-      <class name="testScripts.LoginTest"></class>
-      <class name="testScripts.HomeTest"/>
+      
+      <class name="testScripts.GeneralNewsTest">
+      <methods>
+      <include name="verifyNewUserCreation"></include>
+        <include name="verifySearchExistingUser"></include>
+          <include name="verifyUserReset"></include>
+      </methods>
+      </class>
+     
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

@@ -23,7 +23,8 @@ public class HomePage {
 	@FindBy(linkText="Logout")WebElement clickLogout;
 	@FindBy(xpath = "//a[@href='https://groceryapp.uniqassosiates.com/admin/list-admin' and text()='More info ']")
 	WebElement adminMoreInfo;
-	
+	@FindBy(xpath="//b[text()='7rmart supermarket']")WebElement loginText;
+	@FindBy(xpath="//a[@ href='https://groceryapp.uniqassosiates.com/admin/list-news' and @class='small-box-footer']")WebElement generalNewsMoreInfo;
 	 
    public void clickOnAdminButton() {
 	   AdminButton.click();
@@ -38,5 +39,11 @@ public class HomePage {
 		adminMoreInfo.click();
 	}
 
+   public String textDisplayed() {
+	   return loginText.getText();
+   }
    
+   public void clickOnGeneralNewsMoreInfo() {
+	   generalNewsMoreInfo.click();
+   }
    }

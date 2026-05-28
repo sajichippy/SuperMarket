@@ -2,6 +2,7 @@ package testScripts;
 
 import java.io.IOException;
 
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import utilities.ExcelUtility;
@@ -10,7 +11,7 @@ import pages.LoginPage;
 
 public class LoginTest extends Base{
 
-	@Test
+	@Test(priority =1, description="verify user login with valid credential")
 	public void verifyUserLoginWithValidCredentials() throws IOException {
 		
 		
@@ -20,9 +21,11 @@ public class LoginTest extends Base{
 			loginPage.enterUserNameInUserField(userNameValue);
 			loginPage.enterPasswordOnPasswordField(passwordValue);
 			loginPage.clickSubmitButton();
-		
+			boolean isDashboarddisplayed = loginPage.dashboardDisplay();  // AssertTrue 
+			Assert.assertTrue(isDashboarddisplayed, "User was unable to login with valid credential");
+			
 	}
-	@Test
+	@Test(priority=2, description="verify user login with valid username and invalid password")
 	public void verifyUserLoginWithValidUsernameAndInValidPassowrd() throws IOException {
 		
 		String userNameValue = ExcelUtility.readStringData(1, 0, "LoginPage");
@@ -31,10 +34,13 @@ public class LoginTest extends Base{
 			loginPage.enterUserNameInUserField(userNameValue);
 			loginPage.enterPasswordOnPasswordField(passwordValue);
 			loginPage.clickSubmitButton();
+			String actual = loginPage.textDisplayed();
+			String expected = "7rmart supermarket";
+			Assert.assertEquals(actual, expected,"User was able to login with invalid password");
 		
 		
 	}
-	@Test
+	@Test(priority=3, description="verify user login with invalid username and valid password")
 	public void verifyUserLoginWithInValidUsernameAndValidPassowrd() throws IOException
 	{
 		String userNameValue = ExcelUtility.readStringData(2, 0, "LoginPage");
@@ -43,9 +49,13 @@ public class LoginTest extends Base{
 			loginPage.enterUserNameInUserField(userNameValue);
 			loginPage.enterPasswordOnPasswordField(passwordValue);
 			loginPage.clickSubmitButton();
+			String actual = loginPage.signTextDisplayed();
+			String expected = "Sign in to start your session";
+			Assert.assertEquals(actual, expected,"User Was Able to login with invalid Username");
+			
 	}
 	
-	@Test
+	@Test(priority=4, description="verify user login with invalid username and invalid password")
 	public void verifyUserLoginWithInValidUsernameAndInValidPassowrd() throws IOException
 	{
 	
@@ -55,6 +65,9 @@ public class LoginTest extends Base{
 			loginPage.enterUserNameInUserField(userNameValue);
 			loginPage.enterPasswordOnPasswordField(passwordValue);
 			loginPage.clickSubmitButton();
+			String actual = loginPage.signInRememberText();
+			String expected = "Remember Me";
+			Assert.assertEquals(actual, expected,"User Was Able to login with invalid Username and password");
 	}
 
 }
