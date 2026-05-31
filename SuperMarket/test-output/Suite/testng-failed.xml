@@ -9,7 +9,7 @@
     <classes>
       <class name="testScripts.AdminUsersTest">
         <methods>
-          <include name="verifyNewUserCreation"/>
+          <include name="verifySearchUsers"/>
           <include name="driverCloseAndQuit"/>
           <include name="browserLaunch"/>
         </methods>

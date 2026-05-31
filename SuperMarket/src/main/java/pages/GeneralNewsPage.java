@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import constants.Constants;
+
 public class GeneralNewsPage {
 	public WebDriver driver;
 
@@ -60,7 +62,7 @@ public class GeneralNewsPage {
 	}
 
 	public void enterNewsInformation() {
-		enterTheNews.sendKeys("please enter your news");
+		enterTheNews.sendKeys(Constants.newNews);
 	}
 
 	public void clickOnSaveButton() {

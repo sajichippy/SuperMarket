@@ -11,7 +11,7 @@
 			<class name="testScripts.AdminUsersTest">
 				<methods>
 
-					<include name="verifyNewUserCreation"></include>
+					<include name="verifySearchUsers"></include>
 				</methods>
 			</class>
 
