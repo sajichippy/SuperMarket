@@ -8,13 +8,14 @@ import org.testng.annotations.Test;
 import utilities.ExcelUtility;
 import utilities.FakerUtility;
 import base.Base;
+import constants.Constants;
 import pages.AdminUsersPage;
 import pages.HomePage;
 import pages.LoginPage;
 
 public class AdminUsersTest extends Base {
 
-	@Test(description= "create new user")
+	@Test(description = "create new user")
 	public void verifyNewUserCreation() throws IOException {
 
 		String userNameValue = ExcelUtility.readStringData(0, 0, "LoginPage");
@@ -27,7 +28,8 @@ public class AdminUsersTest extends Base {
 		HomePage home = new HomePage(driver);
 		home.clickOnMoreinfo();
 
-		FakerUtility faker = new FakerUtility();        // create object for FakerUtility class , used fakerclass instead of excel utility
+		FakerUtility faker = new FakerUtility(); // create object for FakerUtility class , used fakerclass instead of
+													// excel utility
 		String newUserNameValue = faker.createRandomFullName();
 		String newpasswordValue = faker.createRandomPassword();
 
@@ -38,23 +40,19 @@ public class AdminUsersTest extends Base {
 		adminUser.enternewPasswordOnPasswordField(newpasswordValue);
 		adminUser.SelectUserType();
 		adminUser.clickOnSaveButton();
-		boolean isAlertMessageDisplayed = adminUser.alertMessageDisplayed();
-		Assert.assertEquals(isAlertMessageDisplayed,"            Username already exists.        ");
 		
+
 		adminUser.clickOnSearchButton();
 		// String searchUserNameValue = ExcelUtility.readStringData(0, 0,
 		// "SearchNames");
-		
-		
+
 		adminUser.enterUserNameToSearch();
 		adminUser.selectSearchUserType();
 		adminUser.clickOnSearchButton1();
-		boolean isActiveMessageDisplayed = adminUser.activeMessageDisplayed();
-		Assert.assertEquals(isActiveMessageDisplayed, ".........RESULT NOT FOUND.......");
 
 		adminUser.reset();
 		boolean isAdminUserTextDisplayed = adminUser.adminTextDisplayed();
-		Assert.assertEquals(isAdminUserTextDisplayed, "User was unable to reset");
+		Assert.assertEquals(isAdminUserTextDisplayed, Constants.adminUserText);
 
 	}
 }

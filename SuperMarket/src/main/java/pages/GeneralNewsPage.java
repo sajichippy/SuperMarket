@@ -31,7 +31,7 @@ public class GeneralNewsPage {
 	WebElement submitButton;
 	@FindBy(xpath = "//span[@class='brand-text font-weight-light']")
 	WebElement MartHeading;
-	@FindBy(xpath="//a[@class='btn btn-rounded btn-primary']")
+	@FindBy(xpath = "//a[@class='btn btn-rounded btn-primary']")
 	WebElement serachButton;
 	@FindBy(xpath = "//input[@placeholder='Title']")
 	WebElement searchMessage;
@@ -39,9 +39,12 @@ public class GeneralNewsPage {
 	WebElement searchButtonsearch;
 	@FindBy(xpath = "//a[@class='btn btn-rounded btn-warning']")
 	WebElement resetButton;
-	@FindBy(xpath="//div[@class='alert alert-success alert-dismissible']")WebElement alertMessage;
-	@FindBy(xpath="//td[text()='please enter your news']")WebElement messg;
-	@FindBy(xpath="//h1[@class='m-0 text-dark']")WebElement manageNewsTitle;
+	@FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
+	WebElement alertMessage;
+	@FindBy(xpath = "//td[text()='please enter your news']")
+	WebElement messg;
+	@FindBy(xpath = "//h1[@class='m-0 text-dark']")
+	WebElement manageNewsTitle;
 
 	public void scrollDown() {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
@@ -67,6 +70,7 @@ public class GeneralNewsPage {
 	public void clickOnMartHeading() {
 		MartHeading.click();
 	}
+
 	public void clickOnSearchButton() {
 		serachButton.click();
 	}
@@ -82,12 +86,15 @@ public class GeneralNewsPage {
 	public void clickOnResetButton() {
 		resetButton.click();
 	}
+
 	public boolean isAlertMessageDisplayed() {
 		return alertMessage.isDisplayed();
 	}
+
 	public boolean isMessgDisplayed() {
 		return messg.isDisplayed();
 	}
+
 	public String isTitleDisplayed() {
 		return manageNewsTitle.getText();
 	}

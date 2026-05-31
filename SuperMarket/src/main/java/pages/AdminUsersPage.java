@@ -43,12 +43,14 @@ public class AdminUsersPage {
 	WebElement searchUserType;
 	@FindBy(xpath = "//button[@name='Search']")
 	WebElement searchButton;
+
 	@FindBy(xpath = "//a[@class='btn btn-rounded btn-warning' and @href='https://groceryapp.uniqassosiates.com/admin/list-admin']")
 	WebElement reset;
-	@FindBy(xpath="//div[@class='alert alert-success alert-dismissible']")WebElement alertMessage;
-	@FindBy(xpath="//span[@class='badge bg-success']")WebElement activeMessage;
-	@FindBy(xpath="//center[text()='.........RESULT NOT FOUND.......']")WebElement resultNotFoundText;
-	@FindBy(xpath="//h1[@class='m-0 text-dark']")WebElement adminUserText;
+	@FindBy(xpath = "//span[@class='badge bg-success']")
+	WebElement activeMessage;
+
+	@FindBy(xpath = "//h1[@class='m-0 text-dark']")
+	WebElement adminUserText;
 
 	public void enterUserNameInUserField(String userNameValue) {
 		userName.sendKeys(userNameValue);
@@ -107,16 +109,9 @@ public class AdminUsersPage {
 	public void reset() {
 		reset.click();
 	}
-	
-	public boolean alertMessageDisplayed() {
-		return alertMessage.isDisplayed();
-	}
-	
-	public boolean activeMessageDisplayed() {
-		return activeMessage.isDisplayed();
-	}
+
 	public boolean adminTextDisplayed() {
-		
+
 		return adminUserText.isDisplayed();
 	}
 }
