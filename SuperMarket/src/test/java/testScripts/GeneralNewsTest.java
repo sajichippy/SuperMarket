@@ -62,7 +62,7 @@ public class GeneralNewsTest extends Base {
 
 	@Test(description = "reset user")
 	public void verifyUserReset() throws IOException {
-		GeneralNewsPage generalNews = new GeneralNewsPage(driver);
+	
 		String userNameValue = ExcelUtility.readStringData(0, 0, "LoginPage");
 		String passwordValue = ExcelUtility.readStringData(0, 1, "LoginPage");
 		LoginPage loginPage = new LoginPage(driver);

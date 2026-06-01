@@ -17,4 +17,5 @@ public class Constants {
 	public static final String newUserCreation = "user was not able to create nes info";
 	public static final String searchExixtingUser ="searched User not found";
 	public static final String newNews = "please enter your news";
+	public static final String searchNews = "please enter your news";
 }

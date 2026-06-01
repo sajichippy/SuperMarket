@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import utilities.WaitUtility;
+
 public class LoginPage {
 
 	public WebDriver driver;
@@ -30,16 +32,21 @@ public class LoginPage {
 	@FindBy(xpath = "//label[@for='remember']")
 	WebElement rememberText;
 
-	public void enterUserNameInUserField(String userNameValue) {
+	public LoginPage enterUserNameInUserField(String userNameValue) {
 		userName.sendKeys(userNameValue);
+		return this;
 	}
 
-	public void enterPasswordOnPasswordField(String passwordValue) {
+	public LoginPage enterPasswordOnPasswordField(String passwordValue) {
 		password.sendKeys(passwordValue);
+		return this;
 	}
 
-	public void clickSubmitButton() {
+	public HomePage clickSubmitButton() {
+		WaitUtility wait = new WaitUtility();
+		wait.waitUntilElementToBeClickable(driver, submit);
 		submit.click();
+		return new HomePage(driver);
 	}
 
 	public boolean dashboardDisplay() {

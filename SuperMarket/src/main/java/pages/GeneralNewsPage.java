@@ -53,32 +53,39 @@ public class GeneralNewsPage {
 		js.executeScript("window.scrollBy(0,350)");
 	}
 
-	public void clickOnGeneralNewsMoreInfo() {
+	public GeneralNewsPage clickOnGeneralNewsMoreInfo() {
 		generaNewsMoreInfo.click();
+		return this;
 	}
 
-	public void clickOnNewUsers() {
+	public GeneralNewsPage clickOnNewUsers() {
 		generalNewsNewUser.click();
+		return this;
+		
 	}
 
-	public void enterNewsInformation() {
+	public GeneralNewsPage enterNewsInformation() {
 		enterTheNews.sendKeys(Constants.newNews);
+		return this;
 	}
 
-	public void clickOnSaveButton() {
+	public GeneralNewsPage clickOnSaveButton() {
 		submitButton.click();
+		return this;
 	}
 
-	public void clickOnMartHeading() {
+	public HomePage clickOnMartHeading() {
 		MartHeading.click();
+		return new HomePage(driver);
 	}
 
-	public void clickOnSearchButton() {
+	public GeneralNewsPage clickOnSearchButton() {
 		serachButton.click();
+		return this;
 	}
 
 	public void enterOnSearchBar() {
-		searchMessage.sendKeys("please enter your news");
+		searchMessage.sendKeys(Constants.searchNews);
 	}
 
 	public void clickOnNextSearchButton() {

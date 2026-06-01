@@ -6,6 +6,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
+import utilities.PageUtility;
+
 public class AdminUsersPage {
 
 	public WebDriver driver;
@@ -16,15 +18,8 @@ public class AdminUsersPage {
 		PageFactory.initElements(driver, this);
 	}
 
-	@FindBy(xpath = "//input[@name='username']")
-	WebElement userName;
-	@FindBy(xpath = "//input[@name='password']")
-	WebElement password;
-	@FindBy(xpath = "//button[@type='submit']")
-	WebElement submit;
-
 	@FindBy(xpath = "//a[@onclick='click_button(1)']")
-	WebElement newUser;
+	WebElement newUserButton;
 	@FindBy(id = "username")
 	WebElement newUserName;
 	@FindBy(id = "password")
@@ -52,62 +47,66 @@ public class AdminUsersPage {
 	@FindBy(xpath = "//h1[@class='m-0 text-dark']")
 	WebElement adminUserText;
 
-	public void enterUserNameInUserField(String userNameValue) {
-		userName.sendKeys(userNameValue);
+	
+	public AdminUsersPage clickOnNewUser() {
+		newUserButton.click();
+		return this;
 	}
 
-	public void enterPasswordOnPasswordField(String passwordValue) {
-		password.sendKeys(passwordValue);
-	}
-
-	public void clickSubmitButton() {
-		submit.click();
-	}
-
-	public void clickOnNewUser() {
-		newUser.click();
-	}
-
-	public void enterNewUserNameInUserField(String newUserNameValue) {
+	public AdminUsersPage enterNewUserNameInUserField(String newUserNameValue) {
 		newUserName.sendKeys(newUserNameValue);
+		return this;
 	}
 
-	public void enternewPasswordOnPasswordField(String newpasswordValue) {
-		password.sendKeys(newpasswordValue);
+	public AdminUsersPage enternewPasswordOnPasswordField(String newpasswordValue) {
+		newPassword.sendKeys(newpasswordValue);
+		return this;
 	}
 
-	public void SelectUserType() {
-		Select userTypeValue = new Select(userType);
+	public AdminUsersPage SelectUserType() {
+		PageUtility pageUtility = new PageUtility();
+		pageUtility.selectDropdownByIndex(userType, 2);
+		return this;
+		
+	/*	Select userTypeValue = new Select(userType);
 		userTypeValue.selectByIndex(2);
-		userType.click();
+		userType.click();*/
 
 	}
 
-	public void clickOnSaveButton() {
+	public AdminUsersPage clickOnSaveButton() {
 		saveButton.click();
+		return this;
 	}
 
-	public void clickOnSearchButton() {
+	public AdminUsersPage clickOnSearchButton() {
 		search.click();
+		return this;
 	}
 
-	public void enterUserNameToSearch() {
+	public AdminUsersPage enterUserNameToSearch() {
 		searchUserName.sendKeys("admin");
+		return this;
 	}
 
-	public void selectSearchUserType() {
-		Select userTypeValue = new Select(searchUserType);
-		userTypeValue.selectByIndex(2);
+	public AdminUsersPage selectSearchUserType() {
+		PageUtility page = new PageUtility();
+		page.selectDropdownByIndex(searchUserType, 2);
+		return this;
+	//	Select userTypeValue = new Select(searchUserType);
+	//	userTypeValue.selectByIndex(2);
 	}
 
-	public void clickOnSearchButton1() {
+	public AdminUsersPage clickOnSearchButton1() {
 
 		searchButton.click();
+		return this;
 
 	}
 
-	public void reset() {
+	public AdminUsersPage reset() {
 		reset.click();
+		return this;
 	}
 
 	public boolean adminTextDisplayed() {
