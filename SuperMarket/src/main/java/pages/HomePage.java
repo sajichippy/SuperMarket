@@ -49,7 +49,8 @@ public class HomePage {
 		return loginText.getText();
 	}
 
-	public void clickOnGeneralNewsMoreInfo() {
+	public GeneralNewsPage clickOnGeneralNewsMoreInfo() {
 		generalNewsMoreInfo.click();
+		return new GeneralNewsPage(driver);
 	}
 }

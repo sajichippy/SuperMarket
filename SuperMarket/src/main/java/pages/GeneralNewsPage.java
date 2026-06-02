@@ -7,8 +7,10 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import constants.Constants;
+import utilities.PageUtility;
 
 public class GeneralNewsPage {
+	
 	public WebDriver driver;
 
 	public GeneralNewsPage(WebDriver driver) {
@@ -47,16 +49,15 @@ public class GeneralNewsPage {
 	WebElement messg;
 	@FindBy(xpath = "//h1[@class='m-0 text-dark']")
 	WebElement manageNewsTitle;
+	
 
 	public void scrollDown() {
-		JavascriptExecutor js = (JavascriptExecutor) driver;
-		js.executeScript("window.scrollBy(0,350)");
+	
+		PageUtility pageUtility = new PageUtility();
+		pageUtility.javaScriptExecutor(driver);
 	}
 
-	public GeneralNewsPage clickOnGeneralNewsMoreInfo() {
-		generaNewsMoreInfo.click();
-		return this;
-	}
+	
 
 	public GeneralNewsPage clickOnNewUsers() {
 		generalNewsNewUser.click();
@@ -84,16 +85,19 @@ public class GeneralNewsPage {
 		return this;
 	}
 
-	public void enterOnSearchBar() {
+	public GeneralNewsPage enterOnSearchBar() {
 		searchMessage.sendKeys(Constants.searchNews);
+		return this;
 	}
 
-	public void clickOnNextSearchButton() {
+	public GeneralNewsPage clickOnNextSearchButton() {
 		searchButtonsearch.click();
+		return this;
 	}
 
-	public void clickOnResetButton() {
+	public GeneralNewsPage clickOnResetButton() {
 		resetButton.click();
+		return this;
 	}
 
 	public boolean isAlertMessageDisplayed() {

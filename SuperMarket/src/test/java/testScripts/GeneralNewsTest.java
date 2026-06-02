@@ -13,6 +13,9 @@ import pages.LoginPage;
 import utilities.ExcelUtility;
 
 public class GeneralNewsTest extends Base {
+	GeneralNewsPage generalNews ;
+	HomePage home ;
+	
 
 	@Test(description = "create new user")
 	public void verifyNewUserCreation() throws IOException {
@@ -20,19 +23,15 @@ public class GeneralNewsTest extends Base {
 		String userNameValue = ExcelUtility.readStringData(0, 0, "LoginPage");
 		String passwordValue = ExcelUtility.readStringData(0, 1, "LoginPage");
 		LoginPage loginPage = new LoginPage(driver);
-		loginPage.enterUserNameInUserField(userNameValue);
-		loginPage.enterPasswordOnPasswordField(passwordValue);
-		loginPage.clickSubmitButton();
+		loginPage.enterUserNameInUserField(userNameValue).enterPasswordOnPasswordField(passwordValue).clickSubmitButton();
 
-		GeneralNewsPage generalNews = new GeneralNewsPage(driver);
+		//GeneralNewsPage generalNews = new GeneralNewsPage(driver);
 		generalNews.scrollDown();
 
-		HomePage home = new HomePage(driver);
-		home.clickOnGeneralNewsMoreInfo();
+	//	HomePage home = new HomePage(driver);
+		generalNews= home.clickOnGeneralNewsMoreInfo();
 
-		generalNews.clickOnNewUsers();
-		generalNews.enterNewsInformation();
-		generalNews.clickOnSaveButton();
+		generalNews.clickOnNewUsers().enterNewsInformation().clickOnSaveButton();
 		boolean isAlerDisplayed = generalNews.isAlertMessageDisplayed();
 		Assert.assertTrue(isAlerDisplayed, Constants.newUserCreation);
 
@@ -43,20 +42,16 @@ public class GeneralNewsTest extends Base {
 		String userNameValue = ExcelUtility.readStringData(0, 0, "LoginPage");
 		String passwordValue = ExcelUtility.readStringData(0, 1, "LoginPage");
 		LoginPage loginPage = new LoginPage(driver);
-		loginPage.enterUserNameInUserField(userNameValue);
-		loginPage.enterPasswordOnPasswordField(passwordValue);
-		loginPage.clickSubmitButton();
+		loginPage.enterUserNameInUserField(userNameValue).enterPasswordOnPasswordField(passwordValue).clickSubmitButton();
 
-		GeneralNewsPage generalNews1 = new GeneralNewsPage(driver);
-		generalNews1.scrollDown();
+		//GeneralNewsPage generalNews = new GeneralNewsPage(driver);
+		generalNews.scrollDown();
 
-		HomePage home = new HomePage(driver);
-		home.clickOnGeneralNewsMoreInfo();
+		//HomePage home = new HomePage(driver);
+		generalNews=	home.clickOnGeneralNewsMoreInfo();
 		// generalNews.clickOnMartHeading();
-		generalNews1.clickOnSearchButton();
-		generalNews1.enterOnSearchBar();
-		generalNews1.clickOnNextSearchButton();
-		boolean ismessgDisplayed = generalNews1.isMessgDisplayed();
+		generalNews.clickOnSearchButton().enterOnSearchBar().clickOnNextSearchButton();
+		boolean ismessgDisplayed = generalNews.isMessgDisplayed();
 		Assert.assertTrue(ismessgDisplayed, Constants.searchExixtingUser);
 	}
 
@@ -66,17 +61,15 @@ public class GeneralNewsTest extends Base {
 		String userNameValue = ExcelUtility.readStringData(0, 0, "LoginPage");
 		String passwordValue = ExcelUtility.readStringData(0, 1, "LoginPage");
 		LoginPage loginPage = new LoginPage(driver);
-		loginPage.enterUserNameInUserField(userNameValue);
-		loginPage.enterPasswordOnPasswordField(passwordValue);
-		loginPage.clickSubmitButton();
+		loginPage.enterUserNameInUserField(userNameValue).enterPasswordOnPasswordField(passwordValue).clickSubmitButton();
 
-		GeneralNewsPage generalNews2 = new GeneralNewsPage(driver);
-		generalNews2.scrollDown();
+		//GeneralNewsPage generalNews = new GeneralNewsPage(driver);
+		generalNews.scrollDown();
 
-		HomePage home = new HomePage(driver);
-		home.clickOnGeneralNewsMoreInfo();
-		generalNews2.clickOnResetButton();
-		String actual = generalNews2.isTitleDisplayed();
+		//HomePage home = new HomePage(driver);
+		generalNews=home.clickOnGeneralNewsMoreInfo();
+		generalNews.clickOnResetButton();
+		String actual = generalNews.isTitleDisplayed();
 		String expected = "Manage News";
 		Assert.assertEquals(actual, expected);
 	}

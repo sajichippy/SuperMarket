@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
+import constants.Constants;
 import utilities.PageUtility;
 
 public class AdminUsersPage {
@@ -85,7 +86,7 @@ public class AdminUsersPage {
 	}
 
 	public AdminUsersPage enterUserNameToSearch() {
-		searchUserName.sendKeys("admin");
+		searchUserName.sendKeys(Constants.searchUser);
 		return this;
 	}
 
